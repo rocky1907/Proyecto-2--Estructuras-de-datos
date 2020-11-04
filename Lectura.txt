@@ -1,3 +1,9 @@
 int
 float
 string
+if
+while
+{
+}
+void
+return
