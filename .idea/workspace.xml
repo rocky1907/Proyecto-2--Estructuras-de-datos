@@ -22,7 +22,6 @@
     <list default="true" id="1b081060-c9f3-45b9-bdd5-8682c0f3bec4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Analizador Semantico.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analizador Semantico.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lectura.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Lectura.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,53 +122,64 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="647" height="466" key="DebuggerActiveHint" timestamp="1604470311249">
+    <state width="647" height="466" key="DebuggerActiveHint" timestamp="1604706914858">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="647" height="466" key="DebuggerActiveHint/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604470311249" />
+    <state width="647" height="466" key="DebuggerActiveHint/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604706914858" />
     <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1604467576993">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604467576993" />
-    <state width="672" height="227" key="GridCell.Tab.0.bottom" timestamp="1604471055834">
+    <state width="1323" height="227" key="GridCell.Tab.0.bottom" timestamp="1604706931801">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="672" height="227" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604471055834" />
-    <state width="672" height="227" key="GridCell.Tab.0.center" timestamp="1604471055833">
+    <state width="1323" height="227" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604706931801" />
+    <state width="1323" height="227" key="GridCell.Tab.0.center" timestamp="1604706931800">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="672" height="227" key="GridCell.Tab.0.center/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604471055833" />
-    <state width="672" height="227" key="GridCell.Tab.0.left" timestamp="1604471055833">
+    <state width="1323" height="227" key="GridCell.Tab.0.center/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604706931800" />
+    <state width="1323" height="227" key="GridCell.Tab.0.left" timestamp="1604706931800">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="672" height="227" key="GridCell.Tab.0.left/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604471055833" />
-    <state width="672" height="227" key="GridCell.Tab.0.right" timestamp="1604471055834">
+    <state width="1323" height="227" key="GridCell.Tab.0.left/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604706931800" />
+    <state width="1323" height="227" key="GridCell.Tab.0.right" timestamp="1604706931800">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="672" height="227" key="GridCell.Tab.0.right/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604471055834" />
-    <state width="672" height="227" key="GridCell.Tab.1.bottom" timestamp="1604471057636">
+    <state width="1323" height="227" key="GridCell.Tab.0.right/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604706931800" />
+    <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1604706934757">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="672" height="227" key="GridCell.Tab.1.bottom/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604471057636" />
-    <state width="672" height="227" key="GridCell.Tab.1.center" timestamp="1604471057636">
+    <state width="1323" height="227" key="GridCell.Tab.1.bottom/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604706934757" />
+    <state width="1323" height="227" key="GridCell.Tab.1.center" timestamp="1604706934757">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="672" height="227" key="GridCell.Tab.1.center/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604471057636" />
-    <state width="672" height="227" key="GridCell.Tab.1.left" timestamp="1604471057636">
+    <state width="1323" height="227" key="GridCell.Tab.1.center/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604706934757" />
+    <state width="1323" height="227" key="GridCell.Tab.1.left" timestamp="1604706934756">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="672" height="227" key="GridCell.Tab.1.left/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604471057636" />
-    <state width="672" height="227" key="GridCell.Tab.1.right" timestamp="1604471057636">
+    <state width="1323" height="227" key="GridCell.Tab.1.left/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604706934756" />
+    <state width="1323" height="227" key="GridCell.Tab.1.right" timestamp="1604706934757">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="672" height="227" key="GridCell.Tab.1.right/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604471057636" />
+    <state width="1323" height="227" key="GridCell.Tab.1.right/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604706934757" />
     <state x="1925" y="90" width="1020" height="725" maximized="true" key="dock-window-1" timestamp="1604434591116">
       <screen x="1366" y="0" width="1920" height="1050" />
     </state>
     <state x="1925" y="90" width="1020" height="725" maximized="true" key="dock-window-1/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604434591116" />
-    <state x="1366" y="391" width="1383" height="746" maximized="true" key="dock-window-2" timestamp="1604467408173">
+    <state x="1366" y="391" width="1383" height="746" maximized="true" key="dock-window-2" timestamp="1604706834313">
       <screen x="1366" y="0" width="1920" height="1050" />
     </state>
-    <state x="1366" y="391" width="1383" height="746" maximized="true" key="dock-window-2/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604467408173" />
+    <state x="1366" y="391" width="1383" height="746" maximized="true" key="dock-window-2/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1604706834313" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Analizador Semantico.py</url>
+          <line>135</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

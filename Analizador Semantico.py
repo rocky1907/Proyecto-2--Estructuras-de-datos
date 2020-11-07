@@ -1,5 +1,5 @@
 import hashlib
-INITIAL_CAPACITY=50
+INITIAL_CAPACITY=20
 
 # Node data structure - essentially a LinkedList node
 class Node:
@@ -9,7 +9,7 @@ class Node:
         self.next=None
 
     def __str__(self):
-        return "<Node: (%s, %s), next: %s>" % (self.key, self.value, self.next != None)
+        return (self.key, self.value, self.next != None)
 
     def __repr__(self):
         return str(self)
