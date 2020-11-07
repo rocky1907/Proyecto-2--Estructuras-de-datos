@@ -1,5 +1,5 @@
 import hashlib
-INITIAL_CAPACITY=20
+INITIAL_CAPACITY=10
 
 # Node data structure - essentially a LinkedList node
 class Node:
@@ -50,6 +50,15 @@ class HashTable:
             _hash=self.generator_Hash(h)
             return _hash
 
+    def hash2(self, key):
+        multi=1
+        hashvalue=0
+        for ch in key:
+            hashvalue+=multi * ord(ch)
+        multi+=1
+        # return the remainder of the by dividing hash by the size of the table
+        return hashvalue % INITIAL_CAPACITY;
+
     def hash(self, key):
         hashsum=0
         # For each character in the key
@@ -68,7 +77,7 @@ class HashTable:
         # 1. Increment size
         self.size+=1
         # 2. Compute index of key
-        index=self.hash(key)
+        index=self.hash2(key)
         # Go to the node corresponding to the hash
         node=self.buckets[index]
         # 3. If bucket is empty:
@@ -89,7 +98,7 @@ class HashTable:
     # Output: value stored under "key" or None if not found
     def find(self, key):
         # 1. Compute hash
-        index=self.hash(key)
+        index=self._hash(key)
         # 2. Go to first node in list at bucket
         node=self.buckets[index]
         # 3. Traverse the linked list at this node
@@ -139,6 +148,7 @@ if __name__ == '__main__':
     prueba.insert(creaCodidoUnico.algorithm_funtion(1,"hola"), "hola")
     prueba.insert(creaCodidoUnico.algorithm_funtion(1,"because yes"), "because yes")
     prueba.insert(creaCodidoUnico.algorithm_funtion(1,"nani"), "nani")'''
+
 
 
 
