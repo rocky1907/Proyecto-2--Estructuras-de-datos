@@ -105,7 +105,7 @@ class Analizador:
                             if not pilaClase.isEmpty():
                                 if pilaClase.peek().getIdentificador() != "declaracion":
                                     pilaClase.peek().setIdentificador("funcion")
-                                    pilaString.push(pilaClase.peek().getTipo)
+                                    pilaString.push(pilaClase.peek().getNombre)
 
 
 
