@@ -6,11 +6,11 @@ diccionarioPalabraRe=dict(nameIf='if', nameWhile='while')
 diccionarioCaracter=dict(mas='+', menos='-', punComa=';', asterisco='*', coma=',',
                          diago='/', igual='=', igualacion='==', diferente='!=', mener='<', menIgual='<=', mayIgual='>=',
                          mayor='>', parentesis=['(',')'], corchetes=['{','}'])
-
+from collections import deque
 class Analizador:
-    def __init__(self):
-        self.nombre=""
-        self.tipo=""
+    def __init__(self,tipo,nombre):
+        self.nombre=nombre
+        self.tipo=tipo
         self.identificador=""
         self.funcion=""
 
@@ -72,25 +72,38 @@ class Analizador:
         return pos.hexdigest()
 
     def recuperar_archivo(self):
-        archivo = open("incorrecto.txt",'r', encoding="UTF8")
-        for linea in archivo.readlines():
-            lineas.append(linea)
-        archivo.close()
-        pilaClase = queue.LifoQueue()
-        pilaString = queue.LifoQueue()
-        diccionario = dict()
-        num_linea = 1
-       # for(pal1, )
+        file='incorrecto.txt'
+        try:
+            with open(file, 'r', encoding="utf-8") as f_obj:
+                for line in f_obj:
+                    contenido=f_obj.readlines()
+        except FileNotFoundError:
+            print("El archivo no existe")
+        f_obj.close()
+        pilaClase=deque()
+        pilaString=deque()
+        diccionario=dict(int=Analizador)
+        num_linea=1
+        with open(file, 'r', encoding="utf-8") as f_obj:
+            for line in f_obj:
+                buffer = line
+                for pal1 in buffer:
+                    if pal1=="}":
+                        pilaString.pop()
+                    if pal1 == "if" or pal1 == "while":
+                        v = Analizador(pal1,"indefinida")
+                        v.setIdentificador("statement")
 
 
 if __name__ == '__main__':
-    prueba1=Analizador()
-    print(prueba1.es_Variable("string"))
+    prueba1=Analizador("indefinido","statement")
+    print(prueba1.recuperar_archivo())
+    '''print(prueba1.es_Variable("string"))
     print(prueba1.es_Caracter("("))
     print(prueba1.es_Palabra("while"))
     print(prueba1.es_String('Hola'))
     print(prueba1.es_Numero("2"))
     print(prueba1.funcion_hash("Hola"))
-    '''print(diccionarioPalabra['nameIf'])
+    print(diccionarioPalabra['nameIf'])
     print(diccionarioVariables['nameInt'])
     print(diccionarioCaracter['mayor'])'''

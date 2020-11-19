@@ -2,6 +2,7 @@ import ast
 from distutils.command.config import config
 
 import item as item
+
 import re
 
 class AnalizadorSemantico:
@@ -22,6 +23,7 @@ class AnalizadorSemantico:
 
     def insertar(self, datos):
         y=0
+        stack=deque()
         for x in datos:
             secuencia=r'int'
             total=re.findall(secuencia, datos[y])
@@ -54,5 +56,6 @@ class AnalizadorSemantico:
 
 
 if __name__ == '__main__':
+
     prueba = AnalizadorSemantico()
     prueba._lectura()
