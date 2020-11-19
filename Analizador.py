@@ -1,4 +1,5 @@
 from collections import deque
+from queue import LifoQueue
 import re
 import queue
 import hashlib
@@ -82,8 +83,8 @@ class Analizador:
         except FileNotFoundError:
             print("El archivo no existe")
         f_obj.close()
-        pilaClase=deque()
-        pilaString=deque()
+        pilaClase=LifoQueue()
+        pilaString=LifoQueue()
         diccionario=dict(int=Analizador)
         num_linea=1
         with open(file, 'r', encoding="utf-8") as f_obj:
@@ -94,7 +95,20 @@ class Analizador:
                         pilaString.pop()
                     if pal1 == "if" or pal1 == "while":
                         v = Analizador(pal1,"indefinida")
-                        v.setIdentificador("statement")
+                        v.setIdentificador("declaracion")
+                        if pilaString:
+                            v.setFuncion(pilaString.peek())
+                        pilaClase.push(v)
+                        pilaString.push(pal1)
+                    if esVariable(pal1) or pal1 == "(":
+                        if pal1 == "(":
+                            if not pilaClase.isEmpty():
+                                if pilaClase.peek().getIdentificador() != "declaracion":
+                                    pilaClase.peek().setIdentificador("funcion")
+                                    pilaString.push(pilaClase.peek().getTipo)
+
+
+
 
 
 if __name__ == '__main__':
