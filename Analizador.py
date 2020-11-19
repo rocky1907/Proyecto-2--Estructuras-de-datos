@@ -106,6 +106,21 @@ class Analizador:
                                 if pilaClase.peek().getIdentificador() != "declaracion":
                                     pilaClase.peek().setIdentificador("funcion")
                                     pilaString.push(pilaClase.peek().getNombre)
+                                    diccionario.pop(funcion_hash(pilaClase.peek().getNombre))
+                        else:
+                            for pal2 in buffer:
+                                a = Analizador(pal1,pal2)
+                                if pilaString:
+                                    a.setFuncion(pilaString.peek())
+                                    if pal1 == "}":
+                                        pilaString.pop()
+                                a.setIdentificador("variable")
+                                pilaClase.push(a)
+                                diccionario.update({funcion_hash(a.getNombre())})
+                    # elif:
+
+
+
 
 
 
