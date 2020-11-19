@@ -1,30 +1,32 @@
+from collections import deque
 import re
 import queue
 import hashlib
-diccionarioVariables=dict(nameVoid='void', nameString='string', nameFloat='float', nameInt='int')
-diccionarioPalabraRe=dict(nameIf='if', nameWhile='while')
-diccionarioCaracter=dict(mas='+', menos='-', punComa=';', asterisco='*', coma=',',
-                         diago='/', igual='=', igualacion='==', diferente='!=', mener='<', menIgual='<=', mayIgual='>=',
-                         mayor='>', parentesis=['(',')'], corchetes=['{','}'])
-from collections import deque
+
+vector_tipos = ['void', 'string', 'float', 'int']
+vector_sentencias_bucles = ['if', 'while']
+vector_caracteres = ['+', '-', ';', '*', ',', '/', '=', '==', '!=', '<', '<=', '>=',
+                          '>', '(', ')', '{', '}']
+
+
 class Analizador:
-    def __init__(self,tipo,nombre):
-        self.nombre=nombre
-        self.tipo=tipo
-        self.identificador=""
-        self.funcion=""
+    def __init__(self, tipo, nombre):
+        self.nombre = nombre
+        self.tipo = tipo
+        self.identificador = ""
+        self.funcion = ""
 
     def setNombre(self, nombre):
-        self.nombre=nombre
+        self.nombre = nombre
 
     def setIdentificador(self, identificador):
-        self.identificador=identificador
+        self.identificador = identificador
 
     def setTipo(self, tipo):
-        self.tipo=tipo
+        self.tipo = tipo
 
     def setFuncion(self, funcion):
-        self.funcion=funcion
+        self.funcion = funcion
 
     def getNombre(self):
         return self.nombre
@@ -43,25 +45,25 @@ class Analizador:
         return var
 
     def es_Variable(self, dato):
-        for aux in diccionarioVariables:
-            if diccionarioVariables[aux] == dato:
+        for aux in vector_tipos:
+            if vector_tipos[aux] == dato:
                 return True
         return False
     def es_Palabra(self, dato):
-        for aux in diccionarioPalabraRe:
-            if diccionarioPalabraRe[aux] == dato:
+        for aux in vector_sentencias_bucles:
+            if vector_sentencias_bucles[aux] == dato:
                 return True
         return False
     def es_Caracter(self,dato):
-        for aux in diccionarioCaracter:
+        for aux in vector_caracteres:
             if aux == "corchetes" or aux=="parentesis":
-                if diccionarioCaracter[aux][0]==dato or diccionarioCaracter[aux][1]==dato:
+                if vector_caracteres[aux][0]==dato or vector_caracteres[aux][1]==dato:
                     return True
-            if diccionarioCaracter[aux] == dato:
+            if vector_caracteres[aux] == dato:
                 return True
         return False
     def es_String(self, dato):
-        return dato[0] == -30 and dato[dato.size() - 1] == -99 or dato[0] == 34 and dato[dato.size() - 1] == 34 or dato[0] == 39 and dato[dato.size() - 1] == 39;
+        return dato[0] == -30 and dato[dato.size() - 1] == -99 or dato[0] == 34 and dato[dato.size() - 1] == 34 or dato[0] == 39 and dato[dato.size() - 1] == 39
     def es_Numero(self, dato):
         x=dato.isdigit()
         return x
@@ -97,7 +99,7 @@ class Analizador:
 
 if __name__ == '__main__':
     prueba1=Analizador("indefinido","statement")
-    print(prueba1.recuperar_archivo())
+    # print(prueba1.recuperar_archivo())
     '''print(prueba1.es_Variable("string"))
     print(prueba1.es_Caracter("("))
     print(prueba1.es_Palabra("while"))
@@ -105,5 +107,5 @@ if __name__ == '__main__':
     print(prueba1.es_Numero("2"))
     print(prueba1.funcion_hash("Hola"))
     print(diccionarioPalabra['nameIf'])
-    print(diccionarioVariables['nameInt'])
-    print(diccionarioCaracter['mayor'])'''
+    print(vector_tipos['nameInt'])
+    print(vector_caracteres['mayor'])'''

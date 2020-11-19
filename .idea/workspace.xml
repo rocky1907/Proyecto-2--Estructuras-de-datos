@@ -19,13 +19,27 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5b55c08-8911-49b1-bbc1-d64f8e13f6a1" name="Default Changelist" comment="" />
+    <list default="true" id="a5b55c08-8911-49b1-bbc1-d64f8e13f6a1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Analizador.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analizador.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1kW9oCZBWcY01nBwkFHRyRODtq7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+  </component>
   <component name="RunManager">
     <configuration name="Analizador" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -49,10 +63,27 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a5b55c08-8911-49b1-bbc1-d64f8e13f6a1" name="Default Changelist" comment="" />
+      <created>1605805655002</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605805655002</updated>
+    </task>
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -60,21 +91,29 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1605744672767" />
-    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1605744969951">
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1605806726390">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1605744969951" />
-    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1605744969951">
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1605806726390" />
+    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1605806726390">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1605744969951" />
-    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1605744969951">
+    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1605806726390" />
+    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1605806726389">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1605744969951" />
-    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1605744969951">
+    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1605806726389" />
+    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1605806726390">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1605744969951" />
+    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1605806726390" />
+    <state x="428" y="43" key="RollbackChangesDialog" timestamp="1605806268130">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="428" y="43" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1605806268130" />
+    <state x="458" y="254" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605805686658">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="458" y="254" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1605805686658" />
   </component>
 </project>
