@@ -1,4 +1,5 @@
 import re
+import queue
 import hashlib
 diccionarioVariables=dict(nameVoid='void', nameString='string', nameFloat='float', nameInt='int')
 diccionarioPalabraRe=dict(nameIf='if', nameWhile='while')
@@ -69,6 +70,18 @@ class Analizador:
         pos.update(dato.encode('utf-8'))
         i = int(pos.hexdigest(),16)
         return pos.hexdigest()
+
+    def recuperar_archivo(self):
+        archivo = open("incorrecto.txt",'r', encoding="UTF8")
+        for linea in archivo.readlines():
+            lineas.append(linea)
+        archivo.close()
+        pilaClase = queue.LifoQueue()
+        pilaString = queue.LifoQueue()
+        diccionario = dict()
+        num_linea = 1
+       # for(pal1, )
+
 
 if __name__ == '__main__':
     prueba1=Analizador()
