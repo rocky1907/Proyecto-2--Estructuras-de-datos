@@ -91,7 +91,7 @@ class Analizador:
             for line in f_obj:
                 buffer = line
                 for pal1 in buffer:
-                    if pal1=="}":
+                    if pal1 == "}":
                         pilaString.pop()
                     if pal1 == "if" or pal1 == "while":
                         v = Analizador(pal1,"indefinida")
@@ -117,7 +117,13 @@ class Analizador:
                                 a.setIdentificador("variable")
                                 pilaClase.push(a)
                                 diccionario.update({funcion_hash(a.getNombre())})
-                    # elif:
+                    elif not es_Caracter(pal1) and  not es_Numero(pal1) and  not es_Palabra(pal1) and  not es_String(pal1):
+                        diccionario_iterador = dict(int = Analizador)
+                        diccionario_iterador = diccionario.get(funcion_hash(pal1))
+                        if diccionario_iterador == len(diccionario)-1 :
+                            print("Error en linea" + num_linea + ":" + pal1 + "---no esta declarado(a)---\n")
+            num_linea = num_linea+1
+
 
 
 
