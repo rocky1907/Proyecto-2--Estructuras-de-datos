@@ -1,13 +1,79 @@
 from collections import deque
+from enum import auto
 from queue import LifoQueue
 import re
 import queue
 import hashlib
-
+import gothon as gothon
 vector_tipos = ['void', 'string', 'float', 'int']
 vector_sentencias_bucles = ['if', 'while']
 vector_caracteres = ['+', '-', ';', '*', ',', '/', '=', '==', '!=', '<', '<=', '>=',
                           '>', '(', ')', '{', '}']
+
+class Node:
+    def __init__(self, value):
+        self.value=value
+        self.next=None
+
+
+class Stack:
+
+    # Initializing a stack.
+    # Use a dummy node, which is
+    # easier for handling edge cases.
+    def __init__(self):
+        self.head=Node("head")
+        self.size=0
+
+    # String representation of the stack
+    def __str__(self):
+        cur=self.head.next
+        out=""
+        while cur:
+            out+=str(cur.value) + "->"
+            cur=cur.next
+        return out[:-3]
+
+
+    def getSize(self):
+        return self.size
+
+    # Check if the stack is empty
+    def isEmpty(self):
+        return self.size == 0
+
+    def peek(self):
+
+        if self.isEmpty():
+            raise Exception("Peeking from an empty stack")
+        return self.head.next.value
+
+    def push(self, value):
+        node=Node(value)
+        node.next=self.head.next
+        self.head.next=node
+        self.size+=1
+
+    def pop(self):
+        if self.isEmpty():
+            raise Exception("Popping from an empty stack")
+        remove=self.head.next
+        self.head.next=self.head.next.next
+        self.size-=1
+        return remove.value
+
+
+# Driver Code
+if __name__ == "__main__":
+    stack=Stack()
+    for i in range(1, 11):
+        stack.push(i)
+    print(f"Stack: {stack}")
+
+    for _ in range(1, 6):
+        remove=stack.pop()
+        print(f"Pop: {remove}")
+    print(f"Stack: {stack}")
 
 
 class Analizador:
@@ -46,32 +112,41 @@ class Analizador:
         return var
 
     def es_Variable(self, dato):
+        i=0
         for aux in vector_tipos:
-            if vector_tipos[aux] == dato:
+            if aux == dato:
                 return True
+        i+=1
         return False
     def es_Palabra(self, dato):
+        i=0
         for aux in vector_sentencias_bucles:
-            if vector_sentencias_bucles[aux] == dato:
+            if vector_sentencias_bucles.__getitem__(i) == dato:
                 return True
+        i=i+1
         return False
     def es_Caracter(self,dato):
+        i=0
         for aux in vector_caracteres:
             if aux == "corchetes" or aux=="parentesis":
-                if vector_caracteres[aux][0]==dato or vector_caracteres[aux][1]==dato:
+                if vector_caracteres.__getitem__(i) is dato or vector_caracteres.__getitem__(i) is dato:
                     return True
-            if vector_caracteres[aux] == dato:
+            if vector_caracteres.__getitem__(i) is dato:
                 return True
+            i=i+1
         return False
     def es_String(self, dato):
-        return dato[0] == -30 and dato[dato.size() - 1] == -99 or dato[0] == 34 and dato[dato.size() - 1] == 34 or dato[0] == 39 and dato[dato.size() - 1] == 39
+        if dato.isdigit():
+            return False
+        else:
+            return True
     def es_Numero(self, dato):
         x=dato.isdigit()
         return x
     def funcion_hash(self,dato):
         pos = hashlib.sha1()
-        pos.update(dato.encode('utf-8'))
-        i = int(pos.hexdigest(),16)
+        pos.update(dato[1].encode('utf-8'))
+        #i = int(pos.hexdigest(),16)
         return pos.hexdigest()
 
     def recuperar_archivo(self):
@@ -83,43 +158,51 @@ class Analizador:
         except FileNotFoundError:
             print("El archivo no existe")
         f_obj.close()
-        pilaClase=LifoQueue()
-        pilaString=LifoQueue()
+        pilaClase=Stack()
+        pilaString=Stack()
         diccionario=dict(int=Analizador)
         num_linea=1
+        pal2 = "vacio"
         with open(file, 'r', encoding="utf-8") as f_obj:
             for line in f_obj:
                 buffer = line
-                for pal1 in buffer:
+                for pal1 in buffer.split(" "):
+                    if pal2 == pal1:
+                       break
                     if pal1 == "}":
                         pilaString.pop()
                     if pal1 == "if" or pal1 == "while":
                         v = Analizador(pal1,"indefinida")
                         v.setIdentificador("declaracion")
-                        if pilaString:
+                        if not pilaString.isEmpty():
                             v.setFuncion(pilaString.peek())
                         pilaClase.push(v)
                         pilaString.push(pal1)
-                    if esVariable(pal1) or pal1 == "(":
+                    if self.es_Variable(pal1) or pal1 is "(":
                         if pal1 == "(":
                             if not pilaClase.isEmpty():
-                                if pilaClase.peek().getIdentificador() != "declaracion":
-                                    pilaClase.peek().setIdentificador("funcion")
+                                if pilaClase.peek() != "funcion":
                                     pilaString.push(pilaClase.peek().getNombre)
-                                    diccionario.pop(funcion_hash(pilaClase.peek().getNombre))
+                                    diccionario.pop(self.funcion_hash(pilaClase.peek().getNombre))
                         else:
-                            for pal2 in buffer:
-                                a = Analizador(pal1,pal2)
-                                if pilaString:
-                                    a.setFuncion(pilaString.peek())
-                                    if pal1 == "}":
-                                        pilaString.pop()
-                                a.setIdentificador("variable")
-                                pilaClase.push(a)
-                                diccionario.update({funcion_hash(a.getNombre())})
-                    elif not es_Caracter(pal1) and  not es_Numero(pal1) and  not es_Palabra(pal1) and  not es_String(pal1):
+                            for aux2 in buffer.split(" "):
+                                if pal1==aux2:
+                                    aux2=aux2
+                                else:
+                                    pal2=aux2
+                                    break
+                            a = Analizador(pal1,pal2)
+                            if not pilaString.isEmpty():
+                                a.setFuncion(pilaString.peek())
+                                if pal1 == "}":
+                                    pilaString.pop()
+                            a.setIdentificador("variable")
+                            pilaClase.push(a)
+                            x=self.funcion_hash(a.getNombre())
+                            diccionario[self.funcion_hash(a.getNombre())] = [a.getNombre(),a.getTipo(),a.getIdentificador(),a.getFuncion()]
+                    elif not self.es_Caracter(pal1) and  not self.es_Numero(pal1) and  not self.es_Palabra(pal1) and  not self.es_String(pal1):
                         diccionario_iterador = dict(int = Analizador)
-                        diccionario_iterador = diccionario.get(funcion_hash(pal1))
+                        diccionario_iterador = diccionario.get(self.funcion_hash(pal1))
                         if diccionario_iterador == len(diccionario)-1 :
                             print("Error en linea" + num_linea + ":" + pal1 + "---no esta declarado(a)---\n")
             num_linea = num_linea+1
@@ -134,7 +217,7 @@ class Analizador:
 
 if __name__ == '__main__':
     prueba1=Analizador("indefinido","statement")
-    # print(prueba1.recuperar_archivo())
+    print(prueba1.recuperar_archivo())
     '''print(prueba1.es_Variable("string"))
     print(prueba1.es_Caracter("("))
     print(prueba1.es_Palabra("while"))
