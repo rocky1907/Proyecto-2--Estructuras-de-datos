@@ -135,11 +135,9 @@ class Analizador:
                 return True
             i=i+1
         return False
-    def es_String(self, dato):
-        if dato.isdigit():
-            return False
-        else:
-            return True
+    def es_String(self, s):
+        x=(s[0] == -30 and s[s.__sizeof__() - 1] == -99 or s[0] == 34 and s[s.__sizeof__() - 1] == 34 or s[0] == 39and s[s.__sizeof__() - 1] == 39)
+        return s
     def es_Numero(self, dato):
         x=dato.isdigit()
         return x
@@ -157,10 +155,11 @@ class Analizador:
                     contenido=f_obj.readlines()
         except FileNotFoundError:
             print("El archivo no existe")
+        lista =[]
         f_obj.close()
         pilaClase=Stack()
         pilaString=Stack()
-        diccionario=dict(int=Analizador)
+        diccionario=dict()
         num_linea=1
         pal2 = "vacio"
         with open(file, 'r', encoding="utf-8") as f_obj:
@@ -168,8 +167,9 @@ class Analizador:
                 buffer = line
                 for pal1 in buffer.split(" "):
                     if pal1 == "\n":
+                        num_linea=num_linea + 1
                         break
-                    if pal2 != pal1:
+                    if pal2 != pal1 and pal1 !="":
                         if pal1 == "}":
                             pilaString.pop()
                         if pal1 == "if" or pal1 == "while":
@@ -187,7 +187,7 @@ class Analizador:
                                         diccionario.pop(self.funcion_hash(pilaClase.peek().getNombre))
                             else:
                                 for aux2 in buffer.split(" "):
-                                    if pal1==aux2:
+                                    if pal1==aux2 or aux2 =="":
                                         aux2=aux2
                                     else:
                                         pal2=aux2
@@ -201,23 +201,28 @@ class Analizador:
                                 pilaClase.push(a)
                                 x=self.funcion_hash(a.getNombre())
                                 diccionario[self.funcion_hash(a.getNombre())] = [a.getNombre(),a.getTipo(),a.getIdentificador(),a.getFuncion()]
-                        elif not self.es_Caracter(pal1) and  not self.es_Numero(pal1) and  not self.es_Palabra(pal1) and  not self.es_String(pal1):
-                            diccionario_iterador = dict(int = Analizador)
+                        elif self.es_Caracter(pal1) != True and  self.es_Numero(pal1)  != True and  self.es_Palabra(pal1) != True and  self.es_String(pal1) != True:
+                            '''diccionario_iterador = dict(int = Analizador)
                             diccionario_iterador = diccionario.get(self.funcion_hash(pal1))
-                            if diccionario_iterador == len(diccionario)-1 :
-                                print("Error en linea" + num_linea + ":" + pal1 + "---no esta declarado(a)---\n")
-            num_linea = num_linea+1
+                            if diccionario_iterador == len(diccionario)-1 :'''
+                            try:
+                                bandera = False
+                                lista=list(diccionario.keys())
+                                for elemento in lista:
+                                    if elemento == self.funcion_hash(pal1):
+                                        bandera = True
+                                if bandera == False:
 
-
-
-
-
+                                    print("Error en linea" + str(num_linea) + ":" + pal1 + "---no esta declarado(a)---")
+                            except FileNotFoundError:
+                                print("Error en linea" + num_linea + ":" + pal1 + "---no esta declarado(a)---")
 
 
 
 
 if __name__ == '__main__':
     prueba1=Analizador("indefinido","statement")
+    #prueba1.es_String("(n")
     print(prueba1.recuperar_archivo())
     '''print(prueba1.es_Variable("string"))
     print(prueba1.es_Caracter("("))
