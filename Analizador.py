@@ -167,44 +167,45 @@ class Analizador:
             for line in f_obj:
                 buffer = line
                 for pal1 in buffer.split(" "):
-                    if pal2 == pal1:
-                       break
-                    if pal1 == "}":
-                        pilaString.pop()
-                    if pal1 == "if" or pal1 == "while":
-                        v = Analizador(pal1,"indefinida")
-                        v.setIdentificador("declaracion")
-                        if not pilaString.isEmpty():
-                            v.setFuncion(pilaString.peek())
-                        pilaClase.push(v)
-                        pilaString.push(pal1)
-                    if self.es_Variable(pal1) or pal1 is "(":
-                        if pal1 == "(":
-                            if not pilaClase.isEmpty():
-                                if pilaClase.peek() != "funcion":
-                                    pilaString.push(pilaClase.peek().getNombre)
-                                    diccionario.pop(self.funcion_hash(pilaClase.peek().getNombre))
-                        else:
-                            for aux2 in buffer.split(" "):
-                                if pal1==aux2:
-                                    aux2=aux2
-                                else:
-                                    pal2=aux2
-                                    break
-                            a = Analizador(pal1,pal2)
+                    if pal1 == "\n":
+                        break
+                    if pal2 != pal1:
+                        if pal1 == "}":
+                            pilaString.pop()
+                        if pal1 == "if" or pal1 == "while":
+                            v = Analizador(pal1,"indefinida")
+                            v.setIdentificador("declaracion")
                             if not pilaString.isEmpty():
-                                a.setFuncion(pilaString.peek())
-                                if pal1 == "}":
-                                    pilaString.pop()
-                            a.setIdentificador("variable")
-                            pilaClase.push(a)
-                            x=self.funcion_hash(a.getNombre())
-                            diccionario[self.funcion_hash(a.getNombre())] = [a.getNombre(),a.getTipo(),a.getIdentificador(),a.getFuncion()]
-                    elif not self.es_Caracter(pal1) and  not self.es_Numero(pal1) and  not self.es_Palabra(pal1) and  not self.es_String(pal1):
-                        diccionario_iterador = dict(int = Analizador)
-                        diccionario_iterador = diccionario.get(self.funcion_hash(pal1))
-                        if diccionario_iterador == len(diccionario)-1 :
-                            print("Error en linea" + num_linea + ":" + pal1 + "---no esta declarado(a)---\n")
+                                v.setFuncion(pilaString.peek())
+                            pilaClase.push(v)
+                            pilaString.push(pal1)
+                        if self.es_Variable(pal1) or pal1 is "(":
+                            if pal1 == "(":
+                                if not pilaClase.isEmpty():
+                                    if pilaClase.peek() != "funcion":
+                                        pilaString.push(pilaClase.peek().getNombre)
+                                        diccionario.pop(self.funcion_hash(pilaClase.peek().getNombre))
+                            else:
+                                for aux2 in buffer.split(" "):
+                                    if pal1==aux2:
+                                        aux2=aux2
+                                    else:
+                                        pal2=aux2
+                                        break
+                                a = Analizador(pal1,pal2)
+                                if not pilaString.isEmpty():
+                                    a.setFuncion(pilaString.peek())
+                                    if pal1 == "}":
+                                        pilaString.pop()
+                                a.setIdentificador("variable")
+                                pilaClase.push(a)
+                                x=self.funcion_hash(a.getNombre())
+                                diccionario[self.funcion_hash(a.getNombre())] = [a.getNombre(),a.getTipo(),a.getIdentificador(),a.getFuncion()]
+                        elif not self.es_Caracter(pal1) and  not self.es_Numero(pal1) and  not self.es_Palabra(pal1) and  not self.es_String(pal1):
+                            diccionario_iterador = dict(int = Analizador)
+                            diccionario_iterador = diccionario.get(self.funcion_hash(pal1))
+                            if diccionario_iterador == len(diccionario)-1 :
+                                print("Error en linea" + num_linea + ":" + pal1 + "---no esta declarado(a)---\n")
             num_linea = num_linea+1
 
 
