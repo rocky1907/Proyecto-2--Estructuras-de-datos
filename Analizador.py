@@ -146,7 +146,7 @@ class Analizador:
         pilaClase=Stack()
         pilaString=Stack()
         diccionario=dict()
-        num_linea=1
+        num_linea=0
         pal2 = "vacio"
         with open(file, 'r', encoding="utf-8") as f_obj:
             for line in f_obj:
