@@ -143,7 +143,7 @@ class Analizador:
         return x
     def funcion_hash(self,dato):
         pos = hashlib.sha1()
-        pos.update(dato[1].encode('utf-8'))
+        pos.update(dato.encode('utf-8'))
         #i = int(pos.hexdigest(),16)
         return pos.hexdigest()
 
@@ -171,7 +171,8 @@ class Analizador:
                         break
                     if pal2 != pal1 and pal1 !="":
                         if pal1 == "}":
-                            pilaString.pop()
+                            if not pilaString.isEmpty():
+                                pilaString.pop()
                         if pal1 == "if" or pal1 == "while":
                             v = Analizador(pal1,"indefinida")
                             v.setIdentificador("declaracion")
@@ -196,7 +197,8 @@ class Analizador:
                                 if not pilaString.isEmpty():
                                     a.setFuncion(pilaString.peek())
                                     if pal1 == "}":
-                                        pilaString.pop()
+                                        if not pilaString.isEmpty():
+                                            pilaString.pop()
                                 a.setIdentificador("variable")
                                 pilaClase.push(a)
                                 x=self.funcion_hash(a.getNombre())
