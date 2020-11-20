@@ -141,26 +141,26 @@ class Analizador:
                     contenido=f_obj.readlines()
         except FileNotFoundError:
             print("El archivo no existe")
-        lista =[]
+        lista=[]
         f_obj.close()
         pilaClase=Stack()
         pilaString=Stack()
         diccionario=dict()
         num_linea=1
-        pal2 = "vacio"
+        pal2="vacio"
         with open(file, 'r', encoding="utf-8") as f_obj:
             for line in f_obj:
-                buffer = line
+                buffer=line
                 for pal1 in buffer.split(" "):
                     if pal1 == "\n":
                         num_linea=num_linea + 1
                         break
-                    if pal2 != pal1 and pal1 !="":
+                    if pal2 != pal1 and pal1 != "":
                         if pal1 == "}":
                             if not pilaString.isEmpty():
                                 pilaString.pop()
                         if pal1 == "if" or pal1 == "while":
-                            v = Analizador(pal1,"indefinida")
+                            v=Analizador(pal1, "indefinida")
                             v.setIdentificador("declaracion")
                             if not pilaString.isEmpty():
                                 v.setFuncion(pilaString.peek())
@@ -174,12 +174,12 @@ class Analizador:
                                         diccionario.pop(self.funcion_hash(pilaClase.peek().getNombre))
                             else:
                                 for aux2 in buffer.split(" "):
-                                    if pal1==aux2 or aux2 =="":
+                                    if pal1 == aux2 or aux2 == "":
                                         aux2=aux2
                                     else:
                                         pal2=aux2
                                         break
-                                a = Analizador(pal1,pal2)
+                                a=Analizador(pal1, pal2)
                                 if not pilaString.isEmpty():
                                     a.setFuncion(pilaString.peek())
                                     if pal1 == "}":
@@ -188,16 +188,18 @@ class Analizador:
                                 a.setIdentificador("variable")
                                 pilaClase.push(a)
                                 x=self.funcion_hash(a.getNombre())
-                                diccionario[self.funcion_hash(a.getNombre())] = [a.getNombre(),a.getTipo(),a.getIdentificador(),a.getFuncion()]
-                        elif self.es_Caracter(pal1) != True and  self.es_Numero(pal1)  != True and  self.es_Palabra(pal1) != True and  self.es_String(pal1) != True:
+                                diccionario[self.funcion_hash(a.getNombre())]=[a.getNombre(), a.getTipo(),
+                                                                               a.getIdentificador(), a.getFuncion()]
+                        elif self.es_Caracter(pal1) != True and self.es_Numero(pal1) != True and self.es_Palabra(
+                                pal1) != True and self.es_String(pal1) != True:
                             '''diccionario_iterador = dict(int = Analizador)
                             diccionario_iterador = diccionario.get(self.funcion_hash(pal1))
                             if diccionario_iterador == len(diccionario)-1 :'''
                             try:
                                 bandera=False
                                 lista=list(diccionario.keys())
-                                lineaux=[]
-                                lineaux=line.split(" ")
+                                lineaux = []
+                                lineaux = line.split(" ")
                                 for elemento in lista:
                                     for nose in lineaux:
                                         if elemento == self.funcion_hash(nose):
@@ -206,8 +208,7 @@ class Analizador:
                                     print("Error en linea" + str(num_linea) + ":" + pal1 + "---no esta declarado(a)---")
                             except FileNotFoundError:
                                 print("Error en linea" + num_linea + ":" + pal1 + "---no esta declarado(a)---")
-
-
+        print("Hola")
 
 
 if __name__ == '__main__':
